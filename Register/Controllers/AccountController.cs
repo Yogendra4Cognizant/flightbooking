@@ -22,6 +22,9 @@ namespace Register.Controllers
         public IActionResult LogIn(User user)
         {
             var res = _repository.GetUser(user);
+            if (res == null)
+                return NotFound("!User Not found");
+
             return Ok(res);
         }
     }
