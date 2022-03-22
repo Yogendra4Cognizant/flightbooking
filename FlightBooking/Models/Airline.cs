@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,8 +18,10 @@ namespace FlightBooking.Models
         public DateTime UpdatedDate { get; set; }
         public int BusinessSeat { get; set; }
         public int NonBusinessSeat { get; set; }
-        
+
         public ICollection<Booking> Booking { get; set; }
-        public ICollection<Inventory> Inventory { get; set; }
+        //public ICollection<Inventory> Inventory { get; set; }
+        [NotMapped]
+        public IFormFile image { get; set; }
     }
 }

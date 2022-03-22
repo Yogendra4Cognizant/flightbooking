@@ -35,3 +35,4 @@ D:\GitFlight\ApiGetway\obj\Debug\net5.0\ApiGateway.dll
 D:\GitFlight\ApiGetway\obj\Debug\net5.0\ref\ApiGateway.dll
 D:\GitFlight\ApiGetway\obj\Debug\net5.0\ApiGateway.pdb
 D:\GitFlight\ApiGetway\obj\Debug\net5.0\ApiGateway.genruntimeconfig.cache
+D:\GitFlight\ApiGetway\obj\Debug\net5.0\ApiGateway.csproj.CopyComplete

@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using FlightBooking.Models;
 using FlightBooking.Service;
+using FlightBooking.Interface;
 
 namespace FlightBooking
 {
@@ -29,11 +30,17 @@ namespace FlightBooking
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IFlightRepository, FlightService>();
+            services.AddScoped<IAirlineRepository, AirlineRepository>();
+            services.AddScoped<IAirPortRepository, AirPortRepository>();
+            services.AddScoped<IInventoryRepository, InventoryRepository>();
+            services.AddScoped<IDiscountRepository, DiscountRepository>();
             services.AddDbContextPool<FlightDbContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("FlightDB"));
+                options.UseSqlServer(Configuration.GetConnectionString("FlightBooking"));
             });
             services.AddControllers();
+           
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FlightBooking", Version = "v1" });
@@ -49,11 +56,11 @@ namespace FlightBooking
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FlightBooking v1"));
             }
-
+            app.UseStaticFiles();
             app.UseRouting();
 
             app.UseAuthorization();
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

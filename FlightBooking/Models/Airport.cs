@@ -9,7 +9,7 @@ namespace FlightBooking.Models
     {
         public Guid AirportId { get; set; }
         public string AirportName { get; set; }
-        public ICollection<Inventory> Source { get; set; }
-        public ICollection<Inventory> Destination { get; set; }
+        //public ICollection<Inventory> Source { get; set; }
+        //public ICollection<Inventory> Destination { get; set; }
     }
 }

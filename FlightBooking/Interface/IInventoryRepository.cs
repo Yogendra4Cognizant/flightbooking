@@ -10,6 +10,6 @@ namespace FlightBooking.Interface
     {
         List<Inventory> GetInventoryList();
         Inventory GetInventoryById(Guid id);
-        void SaveInventory(Inventory id);
+        Inventory SaveInventory(Inventory id);
     }
 }

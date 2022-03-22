@@ -14,6 +14,111 @@
       "UpstreamHttpMethod": [ "GET", "POST", "PUT" ]
     },
     {
+      "DownstreamPathTemplate": "/api/Flight/history/{EmailId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 56817
+        }
+      ],
+      "key": "flightKey",
+      "UpstreamPathTemplate": "/Flight/history/{EmailId}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Flight/cancel/{pnr}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 56817
+        }
+      ],
+      "key": "flightKey",
+      "UpstreamPathTemplate": "/Flight/cancel/{pnr}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Flight/SearchFlight",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 56817
+        }
+      ],
+      "key": "SearchFlightKey",
+      "UpstreamPathTemplate": "/Flight/SearchFlight",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/AirLine",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 56817
+        }
+      ],
+      "key": "flightKey",
+      "UpstreamPathTemplate": "/airline",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/AirPort",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 56817
+        }
+      ],
+      "key": "flightKey",
+      "UpstreamPathTemplate": "/airport",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Inventory",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 56817
+        }
+      ],
+      "key": "flightKey",
+      "UpstreamPathTemplate": "/Inventory",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ]
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/discount/{DiscountCode}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 56817
+        }
+      ],
+      "key": "userKey",
+      "UpstreamPathTemplate": "/discount/{DiscountCode}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Flight/ticket/{PNRNo}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 56817
+        }
+      ],
+      "key": "userKey",
+      "UpstreamPathTemplate": "/Flight/ticket/{PNRNo}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ]
+    },
+    {
       "DownstreamPathTemplate": "/api/account",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [

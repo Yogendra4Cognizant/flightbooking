@@ -83,7 +83,6 @@ D:\GitFlight\Register\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
 D:\GitFlight\Register\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\GitFlight\Register\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 D:\GitFlight\Register\bin\Debug\net5.0\Microsoft.OpenApi.dll
-D:\GitFlight\Register\bin\Debug\net5.0\Newtonsoft.Json.dll
 D:\GitFlight\Register\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\GitFlight\Register\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\GitFlight\Register\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -119,3 +118,4 @@ D:\GitFlight\Register\obj\Debug\net5.0\Register.dll
 D:\GitFlight\Register\obj\Debug\net5.0\ref\Register.dll
 D:\GitFlight\Register\obj\Debug\net5.0\Register.pdb
 D:\GitFlight\Register\obj\Debug\net5.0\Register.genruntimeconfig.cache
+D:\GitFlight\Register\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

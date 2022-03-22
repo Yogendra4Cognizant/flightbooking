@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace FlightBooking.Service
 {
@@ -22,13 +23,24 @@ namespace FlightBooking.Service
 
         public List<Inventory> GetInventoryList()
         {
-            return _context.Inventories.ToList();
+            var res = _context.Inventories.Include(x => x.Airline).Include(x => x.Source).Include(x => x.Destination).ToList();
+            res.ForEach(x =>
+            {
+                x.TotalHour = getDateDifference(x.EndDate , x.StartDate);
+            });
+            return res;
+        }
+        string getDateDifference(DateTime endDate, DateTime startDate)
+        {
+            TimeSpan diffDate = endDate.Subtract(startDate);
+            return diffDate.Hours + "Hr " + diffDate.Minutes + "min";
         }
 
-        public void SaveInventory(Inventory model)
+        public Inventory SaveInventory(Inventory model)
         {
             _context.Inventories.Add(model);
             _context.SaveChanges();
+            return model;
         }
     }
 }

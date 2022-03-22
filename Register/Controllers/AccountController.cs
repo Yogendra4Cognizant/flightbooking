@@ -13,19 +13,35 @@ namespace Register.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private IUserRepository _repository;
-        public AccountController(IUserRepository _repository)
+        private IJwtauthManager _repository;
+        private IUserRepository _userrepository;
+        public AccountController(IJwtauthManager _repository, IUserRepository _userrepository)
         {
             this._repository = _repository;
+            this._userrepository = _userrepository;
         }
-        [HttpGet]
-        public IActionResult LogIn(User user)
+        [HttpPost]
+        public IActionResult LogIn([FromForm] User user)
         {
-            var res = _repository.GetUser(user);
-            if (res == null)
-                return NotFound("!User Not found");
+            var usermodel = _userrepository.GetUser(user);
+            if (usermodel != null)
+            {
+                var token = _repository.Authenticate(usermodel);
+                if (token == null)
+                {
+                    return Unauthorized();
+                }
+                else
+                {
+                    return Ok(new { token, usermodel });
+                }
+            }
+            else
+            {
+                return Unauthorized();
 
-            return Ok(res);
+            }
+
         }
     }
 }

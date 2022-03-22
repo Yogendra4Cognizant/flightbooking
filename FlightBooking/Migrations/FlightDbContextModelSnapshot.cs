@@ -74,11 +74,17 @@ namespace FlightBooking.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("AirlineId")
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("AirlineId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Discount")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EmailId")
                         .HasColumnType("nvarchar(max)");
@@ -91,6 +97,9 @@ namespace FlightBooking.Migrations
 
                     b.Property<short>("Meal")
                         .HasColumnType("smallint");
+
+                    b.Property<string>("MobileNo")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -111,6 +120,23 @@ namespace FlightBooking.Migrations
                     b.HasIndex("InventoryId");
 
                     b.ToTable("Bookings");
+                });
+
+            modelBuilder.Entity("FlightBooking.Models.Discount", b =>
+                {
+                    b.Property<Guid>("DiscountId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DiscountCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("DiscountId");
+
+                    b.ToTable("Discounts");
                 });
 
             modelBuilder.Entity("FlightBooking.Models.Instrument", b =>
@@ -138,6 +164,9 @@ namespace FlightBooking.Migrations
 
                     b.Property<Guid>("DestinationId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("Rows")
                         .HasColumnType("int");
@@ -181,8 +210,8 @@ namespace FlightBooking.Migrations
                     b.Property<short>("Gender")
                         .HasColumnType("smallint");
 
-                    b.Property<int>("Name")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("PassengerId");
 
@@ -193,11 +222,9 @@ namespace FlightBooking.Migrations
 
             modelBuilder.Entity("FlightBooking.Models.Booking", b =>
                 {
-                    b.HasOne("FlightBooking.Models.Airline", "Airline")
+                    b.HasOne("FlightBooking.Models.Airline", null)
                         .WithMany("Booking")
-                        .HasForeignKey("AirlineId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AirlineId");
 
                     b.HasOne("FlightBooking.Models.Inventory", "Inventory")
                         .WithMany()
@@ -205,27 +232,25 @@ namespace FlightBooking.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Airline");
-
                     b.Navigation("Inventory");
                 });
 
             modelBuilder.Entity("FlightBooking.Models.Inventory", b =>
                 {
                     b.HasOne("FlightBooking.Models.Airline", "Airline")
-                        .WithMany("Inventory")
+                        .WithMany()
                         .HasForeignKey("AirlineId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("FlightBooking.Models.Airport", "Destination")
-                        .WithMany("Destination")
+                        .WithMany()
                         .HasForeignKey("DestinationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("FlightBooking.Models.Airport", "Source")
-                        .WithMany("Source")
+                        .WithMany()
                         .HasForeignKey("SourceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -251,15 +276,6 @@ namespace FlightBooking.Migrations
             modelBuilder.Entity("FlightBooking.Models.Airline", b =>
                 {
                     b.Navigation("Booking");
-
-                    b.Navigation("Inventory");
-                });
-
-            modelBuilder.Entity("FlightBooking.Models.Airport", b =>
-                {
-                    b.Navigation("Destination");
-
-                    b.Navigation("Source");
                 });
 
             modelBuilder.Entity("FlightBooking.Models.Booking", b =>

@@ -10,9 +10,10 @@ namespace FlightBooking.Interface
     public interface IFlightRepository
     {
         List<Inventory> SearchFlight(SearchViewModel model);
-        List<BookingViewModel> BookFlight(List<BookingViewModel> model);
+        List<Booking> BookFlight(BookingViewModel model);
         Booking SearchBookedFlight(string PNR);
         Booking CancelBooking(string PNR);
         List<Booking> BookingHistory(string EmailId);
+        List<Booking> BookingHistory();
     }
 }

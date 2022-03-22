@@ -15,13 +15,13 @@ namespace FlightBooking.Models
         }
         protected override void OnModelCreating(ModelBuilder modelbuilder)
         {
-            modelbuilder.Entity<Airport>().HasMany(airport => airport.Source)
-                                          .WithOne(x => x.Source)
-                                          .HasForeignKey(con => con.SourceId);
+            //modelbuilder.Entity<Airport>().HasMany(airport => airport.Source)
+            //                              .WithOne(x => x.Source)
+            //                              .HasForeignKey(con => con.SourceId);
 
-            modelbuilder.Entity<Airport>().HasMany(airport => airport.Destination)
-                                       .WithOne(x => x.Destination)
-                                       .HasForeignKey(con => con.DestinationId);
+            //modelbuilder.Entity<Airport>().HasMany(airport => airport.Destination)
+            //                           .WithOne(x => x.Destination)
+            //                           .HasForeignKey(con => con.DestinationId);
 
         }
 
@@ -31,6 +31,7 @@ namespace FlightBooking.Models
         public DbSet<Passenger> Passengers { get; set; }
         public DbSet<Instrument> Instruments { get; set; }
         public DbSet<Inventory> Inventories { get; set; }
+        public DbSet<Discount> Discounts { get; set; }
         //public DbSet<User> Users { get; set; }
     }
 }
